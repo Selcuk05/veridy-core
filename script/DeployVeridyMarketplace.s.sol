@@ -5,46 +5,25 @@ import {Script, console} from "forge-std/Script.sol";
 import {VeridyMarketplace} from "../src/VeridyMarketplace.sol";
 
 /// @notice Deploys VeridyMarketplace
-/// @dev uses CREATE2 for deterministic address
 contract DeployVeridyMarketplace is Script {
     address constant USDT_MAINNET = 0xdAC17F958D2ee523a2206206994597C13D831ec7;
     address constant USDT_SEPOLIA = 0xd077A400968890Eacc75cdc901F0356c943e4fDb; // Tether USDT on sepolia
-    bytes32 constant SALT = bytes32(uint256(1));
 
     VeridyMarketplace public marketplace;
 
     function run() external returns (VeridyMarketplace) {
         address usdtAddress = getUsdtAddress();
-        address predicted = computeCreate2Address();
 
         console.log("Chain ID:", block.chainid);
         console.log("USDT:", usdtAddress);
-        console.log("Predicted address:", predicted);
-
-        if (predicted.code.length > 0) {
-            console.log("Already deployed!");
-            marketplace = VeridyMarketplace(predicted);
-            if (!marketplace.initialized()) {
-                vm.startBroadcast();
-                marketplace.initialize(usdtAddress);
-                vm.stopBroadcast();
-            }
-            return marketplace;
-        }
 
         vm.startBroadcast();
-        marketplace = new VeridyMarketplace{salt: SALT}();
+        marketplace = new VeridyMarketplace();
         marketplace.initialize(usdtAddress);
         vm.stopBroadcast();
 
         console.log("Deployed to:", address(marketplace));
         return marketplace;
-    }
-
-    function computeCreate2Address() public view returns (address) {
-        bytes memory bytecode = type(VeridyMarketplace).creationCode;
-        bytes32 hash = keccak256(abi.encodePacked(bytes1(0xff), address(this), SALT, keccak256(bytecode)));
-        return address(uint160(uint256(hash)));
     }
 
     function getUsdtAddress() internal view returns (address) {
@@ -58,17 +37,16 @@ contract DeployVeridyMarketplace is Script {
 /// @notice Deploys VeridyMarketplace with mock USDT for local testing
 contract DeployVeridyMarketplaceLocal is Script {
     uint256 constant ANVIL_DEFAULT_KEY = 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80;
-    bytes32 constant SALT = bytes32(uint256(1));
 
     function run() external returns (VeridyMarketplace marketplace, address mockUsdt) {
         address deployer = vm.addr(ANVIL_DEFAULT_KEY);
 
         vm.startBroadcast(ANVIL_DEFAULT_KEY);
 
-        MockUSDT usdt = new MockUSDT{salt: SALT}();
+        MockUSDT usdt = new MockUSDT();
         mockUsdt = address(usdt);
 
-        marketplace = new VeridyMarketplace{salt: SALT}();
+        marketplace = new VeridyMarketplace();
         marketplace.initialize(mockUsdt);
 
         usdt.mint(deployer, 1_000_000 * 10 ** 6);

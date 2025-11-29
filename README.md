@@ -19,10 +19,6 @@ forge test
 forge fmt
 ```
 
-## Deployment
-
-Uses CREATE2 for deterministic addresses (same address on all chains).
-
 ### Setup (one-time)
 
 Import your deployer account into Foundry's secure keystore:
