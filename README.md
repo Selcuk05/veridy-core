@@ -81,7 +81,7 @@ forge script script/DeployVeridyMarketplace.s.sol:DeployVeridyMarketplace --rpc-
 | Network | Address |
 |---------|---------|
 | Mainnet | `0xdAC17F958D2ee523a2206206994597C13D831ec7` |
-| Sepolia | `0x7169D38820dfd117C3FA1f22a697dBA58d90BA06` |
+| Sepolia | `0xd077A400968890Eacc75cdc901F0356c943e4fDb` |
 
 ## License
 
