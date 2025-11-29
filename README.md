@@ -30,15 +30,13 @@ cast wallet import deployer --interactive
 ### Deploy to Sepolia
 
 ```bash
-forge script script/DeployVeridyMarketplace.s.sol:DeployVeridyMarketplace \
-  --rpc-url sepolia --account deployer --broadcast
+forge script script/DeployVeridyMarketplace.s.sol:DeployVeridyMarketplace --rpc-url sepolia --account deployer --broadcast
 ```
 
-### Deploy to Mainnet
+### Deploy to Arbitrum
 
 ```bash
-forge script script/DeployVeridyMarketplace.s.sol:DeployVeridyMarketplace \
-  --rpc-url mainnet --account deployer --broadcast
+forge script script/DeployVeridyMarketplace.s.sol:DeployVeridyMarketplace --rpc-url arbitrum --account deployer --broadcast
 ```
 
 ### Local Development
@@ -52,14 +50,6 @@ anvil
 # Terminal 2
 forge script script/DeployVeridyMarketplace.s.sol:DeployVeridyMarketplaceLocal \
   --rpc-url http://localhost:8545 --broadcast
-```
-
-### Predict Address
-
-Run the script without `--broadcast` to see the predicted deployment address:
-
-```bash
-forge script script/DeployVeridyMarketplace.s.sol:DeployVeridyMarketplace --rpc-url $RPC_URL
 ```
 
 ## Contract Architecture
@@ -76,7 +66,7 @@ forge script script/DeployVeridyMarketplace.s.sol:DeployVeridyMarketplace --rpc-
 
 | Network | Address |
 |---------|---------|
-| Mainnet | `---` |
+| Arbitrum | `---` |
 | Sepolia | `0x57b721a1904fb5187b93857f7f38fba80b568f34` |
 
 ## License

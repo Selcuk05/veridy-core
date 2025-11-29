@@ -8,6 +8,7 @@ import {VeridyMarketplace} from "../src/VeridyMarketplace.sol";
 contract DeployVeridyMarketplace is Script {
     address constant USDT_MAINNET = 0xdAC17F958D2ee523a2206206994597C13D831ec7;
     address constant USDT_SEPOLIA = 0xd077A400968890Eacc75cdc901F0356c943e4fDb; // Tether USDT on sepolia
+    address constant USDT_ARBITRUM = 0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9; // Bridged USDT on Arbitrum One
 
     VeridyMarketplace public marketplace;
 
@@ -29,6 +30,7 @@ contract DeployVeridyMarketplace is Script {
     function getUsdtAddress() internal view returns (address) {
         if (block.chainid == 1) return USDT_MAINNET;
         if (block.chainid == 11155111) return USDT_SEPOLIA;
+        if (block.chainid == 42161) return USDT_ARBITRUM;
         if (block.chainid == 31337) revert("Use DeployVeridyMarketplaceLocal");
         revert("Unsupported chain");
     }

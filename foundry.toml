@@ -12,6 +12,6 @@ via_ir = true
 
 [rpc_endpoints]
 sepolia = "https://1rpc.io/sepolia"
-mainnet = "https://eth.drpc.org"
+arbitrum = "https://arb1.arbitrum.io/rpc"
 
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
