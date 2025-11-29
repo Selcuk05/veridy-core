@@ -31,14 +31,14 @@ cast wallet import deployer --interactive
 
 ```bash
 forge script script/DeployVeridyMarketplace.s.sol:DeployVeridyMarketplace \
-  --rpc-url $SEPOLIA_RPC_URL --account deployer --broadcast --verify
+  --rpc-url sepolia --account deployer --broadcast
 ```
 
 ### Deploy to Mainnet
 
 ```bash
 forge script script/DeployVeridyMarketplace.s.sol:DeployVeridyMarketplace \
-  --rpc-url $MAINNET_RPC_URL --account deployer --broadcast --verify
+  --rpc-url mainnet --account deployer --broadcast
 ```
 
 ### Local Development
