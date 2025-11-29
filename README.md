@@ -66,7 +66,7 @@ forge script script/DeployVeridyMarketplace.s.sol:DeployVeridyMarketplaceLocal \
 
 | Network | Address |
 |---------|---------|
-| Arbitrum | `---` |
+| Arbitrum | `0xD3A17B869883EAec005620D84B38E68d3c6cF893` |
 | Sepolia | `0x57b721a1904fb5187b93857f7f38fba80b568f34` |
 
 ## License
