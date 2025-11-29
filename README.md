@@ -1,10 +1,10 @@
 # Veridy Marketplace
 
-A decentralized data marketplace for selling encrypted files stored on IPFS. Uses ECDH for secure key exchange between sellers and buyers.
+Veridy is a decentralized data marketplace, where users can sell data to be bought with USDT by people, companies and other third parties. This repository contains of the core smart contract of the Veridy marketplace, as well as the deployment and test scripts.
 
 ## Overview
 
-Sellers upload encrypted files to IPFS and list them on the marketplace. Buyers purchase listings by depositing USDT in escrow. When the seller accepts, they provide the encrypted decryption key and receive payment.
+Veridy utilises Tether WDK for its wallet infrastructure. This allows easy onboarding for both newcomers and crypto-native users. On Veridy, users can sell many types of data (including tabular, image, audio and many others...) to those who are in need of specific, domain-focused data for their research, work, and such other activities. 
 
 ## Quick Start
 

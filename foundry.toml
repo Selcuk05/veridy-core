@@ -10,4 +10,8 @@ optimizer = true
 optimizer_runs = 200
 via_ir = true
 
+[rpc_endpoints]
+sepolia = "https://1rpc.io/sepolia"
+mainnet = "https://eth.drpc.org"
+
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
