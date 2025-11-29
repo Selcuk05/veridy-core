@@ -72,12 +72,12 @@ forge script script/DeployVeridyMarketplace.s.sol:DeployVeridyMarketplace --rpc-
 - **acceptPurchase(purchaseId, encK)** - Seller accepts and provides encrypted key
 - **cancelPurchase(purchaseId)** - Buyer cancels and gets refund
 
-### USDT Addresses
+### Deployment addresses
 
 | Network | Address |
 |---------|---------|
-| Mainnet | `0xdAC17F958D2ee523a2206206994597C13D831ec7` |
-| Sepolia | `0xd077A400968890Eacc75cdc901F0356c943e4fDb` |
+| Mainnet | `---` |
+| Sepolia | `0x57b721a1904fb5187b93857f7f38fba80b568f34` |
 
 ## License
 
