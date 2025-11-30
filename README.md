@@ -10,39 +10,34 @@ Veridy utilises Tether WDK for its wallet infrastructure. This allows easy onboa
 
 ```mermaid
 flowchart LR
-    subgraph sell [" "]
+    subgraph sell ["👤 Seller"]
         direction TB
-        S1[📁 Upload Data]
-        S2[🏷️ Set Price]
+        S1[📁 Upload Data] --> S2[🏷️ Set Price & Metadata]
     end
 
-    subgraph market [" "]
+    subgraph market ["🏪 Marketplace"]
         direction TB
-        M1[🛒 Marketplace]
-        M2[💰 Escrow]
+        M1[📋 Listings] --> M2[💰 USDT Escrow]
     end
 
-    subgraph buy [" "]
+    subgraph buy ["👥 Buyer"]
         direction TB
-        B1[🔍 Browse & Buy]
-        B2[📥 Get Data]
+        B1[🔍 Browse & Select] --> B2[📥 Receive Data]
     end
 
-    sell -->|List for sale| market
-    market -->|Purchase| buy
-    M2 -->|USDT to seller| sell
+    sell -->|"createListing()"| market
+    market -->|"purchaseListing()"| buy
+    buy -.->|"USDT Payment"| market
+    market -.->|"acceptPurchase()"| sell
 ```
 
 ```mermaid
-flowchart TB
-    A[🧑‍💻 Seller uploads data & sets price] --> B[📋 Listing appears on marketplace]
-    B --> C[🛒 Buyer pays with USDT]
-    C --> D[💰 Payment held in escrow]
-    D --> E{Seller's decision}
-    E -->|Accept| F[✅ Seller gets paid<br/>Buyer gets access]
-    E -->|Timeout| G[↩️ Buyer gets refund]
-    C --> H[❌ Buyer can cancel]
-    H --> G
+flowchart LR
+    A[📁 List Data] --> B[💵 Buyer Pays]
+    B --> C[💰 Escrow]
+    C --> D{Accept?}
+    D -->|Yes| E[✅ Complete]
+    D -->|No/Timeout| F[↩️ Refund]
 ``` 
 
 ## Quick Start
