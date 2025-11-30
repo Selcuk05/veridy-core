@@ -4,7 +4,46 @@ Veridy is a decentralized data marketplace, where users can sell data to be boug
 
 ## Overview
 
-Veridy utilises Tether WDK for its wallet infrastructure. This allows easy onboarding for both newcomers and crypto-native users. On Veridy, users can sell many types of data (including tabular, image, audio and many others...) to those who are in need of specific, domain-focused data for their research, work, and such other activities. 
+Veridy utilises Tether WDK for its wallet infrastructure. This allows easy onboarding for both newcomers and crypto-native users. On Veridy, users can sell many types of data (including tabular, image, audio and many others...) to those who are in need of specific, domain-focused data for their research, work, and such other activities.
+
+## How It Works
+
+```mermaid
+flowchart LR
+    subgraph sell [" "]
+        direction TB
+        S1[📁 Upload Data]
+        S2[🏷️ Set Price]
+    end
+
+    subgraph market [" "]
+        direction TB
+        M1[🛒 Marketplace]
+        M2[💰 Escrow]
+    end
+
+    subgraph buy [" "]
+        direction TB
+        B1[🔍 Browse & Buy]
+        B2[📥 Get Data]
+    end
+
+    sell -->|List for sale| market
+    market -->|Purchase| buy
+    M2 -->|USDT to seller| sell
+```
+
+```mermaid
+flowchart TB
+    A[🧑‍💻 Seller uploads data & sets price] --> B[📋 Listing appears on marketplace]
+    B --> C[🛒 Buyer pays with USDT]
+    C --> D[💰 Payment held in escrow]
+    D --> E{Seller's decision}
+    E -->|Accept| F[✅ Seller gets paid<br/>Buyer gets access]
+    E -->|Timeout| G[↩️ Buyer gets refund]
+    C --> H[❌ Buyer can cancel]
+    H --> G
+``` 
 
 ## Quick Start
 
